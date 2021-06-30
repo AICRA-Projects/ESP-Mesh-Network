@@ -1,0 +1,117 @@
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------*
+Author : sumit chatterjee 
+email id : csumit249@gmail.com
+*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
+#include "painlessMesh.h"
+// WiFi Credentials
+#define   MESH_PREFIX     "SSID"
+#define   MESH_PASSWORD   "PWD"
+#define   MESH_PORT       5555
+bool button1_in1 = 0;
+int long a;
+bool button2_in2 = 0;
+//Pin Declaration
+#define Button1 D0
+#define Button2 D1
+#define out D3
+#define out2 D6
+bool out_status = 0;
+Scheduler userScheduler; 
+painlessMesh  mesh;
+void sendMessage() ; 
+Task taskSendMessage( TASK_SECOND * 1 , TASK_FOREVER, &sendMessage );
+void sendMessage() 
+{
+// Reading Status of Pushbutton
+  if (digitalRead(Button1) == HIGH){
+    button1_in1 = HIGH;
+  }
+    else{
+      button1_in1 = LOW;
+    }
+   
+  if (digitalRead(Button2) == HIGH){
+    button2_in2 = HIGH;
+  }
+  else{
+    button2_in2 = LOW;
+  }
+// Serializing in JSON Format 
+  DynamicJsonDocument doc(1024);
+  doc["Relay1"] = button1_in1;
+  doc["Relay2"] = button2_in2;
+  String msg ;
+  serializeJson(doc, msg);
+    mesh.sendBroadcast( msg );
+  Serial.println(msg);
+  taskSendMessage.setInterval((TASK_SECOND * 1));
+}
+void receivedCallback( uint32_t from, String &msg ) {
+  String json;
+  DynamicJsonDocument doc(1024);
+  json = msg.c_str();
+  DeserializationError error = deserializeJson(doc, json);
+  if (error)
+  {
+    Serial.print("deserializeJson() failed: ");
+    Serial.println(error.c_str());
+  }
+   String gas_data = doc["GAS value:"];
+  Serial.println("From node2");
+   Serial.print("GAS value:");
+   Serial.print(gas_data);
+   int str_len_gas  = gas_data.length()+1;
+   char ar_gas[str_len_gas];
+   gas_data.toCharArray(ar_gas,str_len_gas);
+   int a_gas  = atoi(ar_gas);
+   analogWrite(out2,a_gas);
+   //analogWrite(out2,(int)gas_data);
+      String dist_data = doc["Gate state:"];
+  Serial.println("From node3");
+   Serial.print("Gate state:");
+   Serial.print(dist_data);
+      String fire_data = doc["Fire State:"];
+  Serial.println("From node2");
+   Serial.print("Fire state:\t");
+   Serial.print(fire_data);
+         String temp_data = doc["Temperature:"];
+  Serial.println("From node2");
+   Serial.print("Temperature:\t");
+   Serial.print(temp_data);
+    if(doc["Gate state:"] > 70 ){
+  digitalWrite(out,1);
+  Serial.print("out gate");
+    }
+    else if (doc["Gate state:"] < 70 && doc["Gate state:"] > 0){
+      digitalWrite(out,0);
+      Serial.print("no gate");
+    }
+}
+void newConnectionCallback(uint32_t nodeId) {
+  Serial.printf("--> startHere: New Connection, nodeId = %u\n", nodeId);
+}
+void changedConnectionCallback() {
+  Serial.printf("Changed connections\n");
+}
+void nodeTimeAdjustedCallback(int32_t offset) {
+  Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(), offset);
+}
+void setup() {
+  Serial.begin(115200);
+  pinMode(Button1, INPUT);
+  pinMode(Button2, INPUT);
+  pinMode(out, OUTPUT);
+  pinMode(out2, OUTPUT);
+//  pinMode(Button3, INPUT);
+  mesh.setDebugMsgTypes( ERROR | STARTUP );  // set before init() so that you can see startup messages
+  mesh.init( MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT );
+  mesh.onReceive(&receivedCallback);
+  mesh.onNewConnection(&newConnectionCallback);
+  mesh.onChangedConnections(&changedConnectionCallback);
+  mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
+  userScheduler.addTask( taskSendMessage );
+  taskSendMessage.enable();
+}
+void loop() {
+  mesh.update();
+}
