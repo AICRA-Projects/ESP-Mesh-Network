@@ -22,15 +22,5 @@ NodeMCU is an open-source Lua based firmware and development board specially tar
 * PCB Antenna
 * Small Sized module to fit smartly inside your IoT projects
 ## Demostration:
-
-       m2
-    /  |  \
-  /    |   \
-/      |    \
-m1----------- m3
- \     |      /
-  \    |     /
-   \   |    /
-       m4
-       
-       
+* Step_1 :
+#### elo
