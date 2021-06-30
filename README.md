@@ -21,4 +21,16 @@ NodeMCU is an open-source Lua based firmware and development board specially tar
 * USB-TTL based on CP2102 is included onboard, Enabling Plug n Play
 * PCB Antenna
 * Small Sized module to fit smartly inside your IoT projects
-## Method
+## Demostration:
+
+       m2
+    /  |  \
+  /    |   \
+/      |    \
+m1----------- m3
+ \     |      /
+  \    |     /
+   \   |    /
+       m4
+       
+       
