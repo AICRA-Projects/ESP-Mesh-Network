@@ -38,9 +38,18 @@ painlessMesh is designed to be used with Arduino, but it does not use the Arduin
 #### painlessMesh is not IP networking
 painlessMesh does not create a TCP/IP network of nodes. Rather each of the nodes is uniquely identified by its 32bit chipId which is retrieved from the esp8266/esp32 using the system_get_chip_id() call in the SDK.  Every node will have a unique number.  Messages can either be broadcast to all of the nodes on the mesh, or sent specifically to an individual node which is identified by its nodeId.
 ## Installation
-painlessMesh is included in both the Arduino Library Manager and the platformio library registry and can easily be installed via either of those methods.
-* Step_2 :
-#### Code_M1
-Its main node code of the
-![servo](https://user-images.githubusercontent.com/42414598/123961455-024ca580-d9ce-11eb-9df0-8c961429c9ff.PNG)
- Project it receives
+painlessMesh is included in both the Arduino Library Manager and the platformio library registry and can easily be installed via either of those methods. 
+ID: https://gitlab.com/painlessMesh/painlessMesh
+* Step_2 : This MESH network interface with each node and communication is displayed in serial monitor which is defined with unique ID's of each Node 
+#### Code_MESH_1
+Its act as  a main node which is connected with two input buttons and one output led therefore two input buttons direct the input towards the node4 and node3 , This node also provides the output from node3 in the from of on & off state of LED 
+#### Code_MESH_2
+This node is connected with Temperarture sensore of analog pins in nodemcu and D2 pins (digital pins) connected with LDR(light dependent resistor) Module thats provides the state of fire or high intensity light. Its output can be checked with serial monitor of other nodes 
+#### Code_MESH_3 
+Third node is define with a Distance sensor i.e srf-04 Ultrasonic sensor ( int l_trigPin = D5; int l_echoPin = D6; ) of the digital pins in nodemcu and output pins (D8) which shows the interface with node1
+#### Code_MESH_4
+Fourth Node is define with a gas sensor i.e MQ-5  of the analog pins in nodemcu and output pins (D2) which shows the interface with node1 when button is pressed 
+
+## Reference 
+* https://randomnerdtutorials.com/esp-mesh-esp32-esp8266-painlessmesh/
+* https://github.com/espressif/esp-mdf
