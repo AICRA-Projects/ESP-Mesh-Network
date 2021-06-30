@@ -39,3 +39,8 @@ painlessMesh is designed to be used with Arduino, but it does not use the Arduin
 painlessMesh does not create a TCP/IP network of nodes. Rather each of the nodes is uniquely identified by its 32bit chipId which is retrieved from the esp8266/esp32 using the system_get_chip_id() call in the SDK.  Every node will have a unique number.  Messages can either be broadcast to all of the nodes on the mesh, or sent specifically to an individual node which is identified by its nodeId.
 ## Installation
 painlessMesh is included in both the Arduino Library Manager and the platformio library registry and can easily be installed via either of those methods.
+* Step_2 :
+#### Code_M1
+Its main node code of the
+![servo](https://user-images.githubusercontent.com/42414598/123961455-024ca580-d9ce-11eb-9df0-8c961429c9ff.PNG)
+ Project it receives
