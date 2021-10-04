@@ -4,6 +4,15 @@ A mesh network is a network in which devices -- or nodes -- are linked together,
 Nodes in a network are programmed with software that tells the node how to handle information and interact with the network.
 Mesh networks use routing or flooding techniques to send messages. In routing, a message hops from node to node to get to its destination. The mesh network must have continuous connections and reconfigure itself if a path is broken, using self-healing algorithms. There will often be more than one path between a source and a destination.
 Mesh networks enable many devices to share internet connectivity, and for devices to communicate directly without first going through the internet. The utility of a mesh network over other network types, such as a hub and spoke network, is that if a node is too far away from the hub, it can still communicate via a closer node until it reaches a router.
+
+## How to operate:
+## Step 1: 4 ESPNodemcu and sensor connected in column 
+## Step 2: 2 Red Buttons are defined press anyone a light will blink
+## Step 3: Now connect Battery or 5v adaptor 
+## Step 4: Bring an object in front of Ultrasonic sensor or 3rd row sensor a light will blink
+## Step 5: GAS, Fire, Ultrasonic sensor and Tempertue Sensors are Connected 
+## Step 6: projects is in active state and output model is working of ESP8266 mesh networking model 
+
 ## What is ESP8266 NodeMCU ?
 NodeMCU is an open-source Lua based firmware and development board specially targeted for IoT based Applications. It includes firmware that runs on the ESP8266 Wi-Fi SoC from Espressif Systems, and hardware which is based on the ESP-12 module.
 * NodeMCU ESP8266 Specifications & Features: 
@@ -49,6 +58,7 @@ This node is connected with Temperarture sensore of analog pins in nodemcu and D
 Third node is define with a Distance sensor i.e srf-04 Ultrasonic sensor ( int l_trigPin = D5; int l_echoPin = D6; ) of the digital pins in nodemcu and output pins (D8) which shows the interface with node1
 #### Code_MESH_4
 Fourth Node is define with a gas sensor i.e MQ-5  of the analog pins in nodemcu and output pins (D2) which shows the interface with node1 when button is pressed 
+
 
 ## Reference 
 * https://randomnerdtutorials.com/esp-mesh-esp32-esp8266-painlessmesh/
