@@ -30,7 +30,8 @@ NodeMCU is an open-source Lua based firmware and development board specially tar
 * USB-TTL based on CP2102 is included onboard, Enabling Plug n Play
 * PCB Antenna
 * Small Sized module to fit smartly inside your IoT projects
-## Demonstration:
+
+## Prerequisites for Mesh topology (Project):
 * Step 1 :
 #### Intro to painlessMesh:
 painlessMesh is a library that takes care of the particulars of creating a simple mesh network using esp8266 and esp32 hardware.  The goal is to allow the programmer to work with a mesh network without having to worry about how the network is structured or managed.
