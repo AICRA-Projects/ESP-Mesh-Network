@@ -30,8 +30,8 @@ NodeMCU is an open-source Lua based firmware and development board specially tar
 * USB-TTL based on CP2102 is included onboard, Enabling Plug n Play
 * PCB Antenna
 * Small Sized module to fit smartly inside your IoT projects
-## Demostration:
-* Step_1 :
+## Demonstration:
+* Step 1 :
 #### Intro to painlessMesh:
 painlessMesh is a library that takes care of the particulars of creating a simple mesh network using esp8266 and esp32 hardware.  The goal is to allow the programmer to work with a mesh network without having to worry about how the network is structured or managed.
 
@@ -49,7 +49,7 @@ painlessMesh does not create a TCP/IP network of nodes. Rather each of the nodes
 ## Installation
 painlessMesh is included in both the Arduino Library Manager and the platformio library registry and can easily be installed via either of those methods. 
 ID: https://gitlab.com/painlessMesh/painlessMesh
-* Step_2 : This MESH network interface with each node and communication is displayed in serial monitor which is defined with unique ID's of each Node 
+* Step 2 : This MESH network interface with each node and communication is displayed in serial monitor which is defined with unique ID's of each Node 
 #### Code_MESH_1
 Its act as  a main node which is connected with two input buttons and one output led therefore two input buttons direct the input towards the node4 and node3 , This node also provides the output from node3 in the from of on & off state of LED 
 #### Code_MESH_2
