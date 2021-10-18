@@ -51,6 +51,20 @@ painlessMesh does not create a TCP/IP network of nodes. Rather each of the nodes
 painlessMesh is included in both the Arduino Library Manager and the platformio library registry and can easily be installed via either of those methods. 
 ID: https://gitlab.com/painlessMesh/painlessMesh
 * Step 2 : This MESH network interface with each node and communication is displayed in serial monitor which is defined with unique ID's of each Node 
+# Circuit Diagram Each Node 
+
+## Node 1 (Main Node)
+![image (1)](https://user-images.githubusercontent.com/42414598/137736877-b480757a-4bd1-487c-9e2f-b4c75b5b5599.png)
+
+## Node 2 
+![image (2)](https://user-images.githubusercontent.com/42414598/137737000-a161aa78-a82e-4bb2-92a7-eb0fd05abf26.png)
+
+## Node 3 
+![image](https://user-images.githubusercontent.com/42414598/137737089-e2c6b911-b258-42c8-bf3b-02bd70300af9.png)
+
+## Node 4 
+![LDR flame sensor NodeMCU](https://user-images.githubusercontent.com/42414598/137737148-9fe6dbfb-9d95-4514-8065-7312cbddc869.jpg)
+
 #### Code_MESH_1
 Its act as  a main node which is connected with two input buttons and one output led therefore two input buttons direct the input towards the node4 and node3 , This node also provides the output from node3 in the from of on & off state of LED 
 #### Code_MESH_2
